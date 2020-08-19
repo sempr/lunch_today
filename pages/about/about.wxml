@@ -6,20 +6,20 @@
 </text>
 
 <text>
-版本：v0.0.2
+版本：v0.0.3
 </text>
 
 <text>
 更新：<br/>
-1. 优化随机算法 <br/>
-2. 现在增加后端，通过后端获取今天吃什么的数据
+1. 随机算法转移至前端 <br/>
+2. 取消后端，静态输出json数据 <br/>
 </text>
 
 <text>
 如何增删餐馆？<br/>
-1. 访问 https://github.com/Lorry1123/lunch-today-be
+1. 访问 https://github.com/sempr/lunch-data
 2. watch star fork 素质三连
-3. 自己修改 config.json 配置，然后提 PR
+3. 自己在 lunch.json 按格式增加删除修改内容，然后提 PR
 </text>
 <text>
 功能少如何解决：键盘给你自己来写
