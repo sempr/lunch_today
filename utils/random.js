@@ -1,4 +1,5 @@
 const seed = function (s) {
+  s = Math.floor(s);
   var mask = 0xffffffff;
   var m_w = (123456789 + s) & mask;
   var m_z = (987654321 - s) & mask;

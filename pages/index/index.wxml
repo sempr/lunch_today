@@ -1,33 +1,21 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container">
   <view class="lunch">
     <view class="item good">
-      <view class="title">
-        宜
-      </view>
+      <view class="title">宜</view>
       <view class="info">
         <view class="restaurant" wx:for="{{goods}}">
-          <view class="restaurantTitle">
-            {{item.name}}
-          </view>
-          <view>
-            {{item.good}}
-          </view>
+          <view class="restaurantTitle">{{item.name}}</view>
+          <view>{{item.good}}</view>
         </view>
       </view>
     </view>
     <view class="item bad">
-      <view class="title">
-        忌
-      </view>
+      <view class="title">忌</view>
       <view class="info">
         <view class="restaurant" wx:for="{{bads}}">
-          <view class="restaurantTitle">
-            {{item.name}}
-          </view>
-          <view>
-            {{item.bad}}
-          </view>
+          <view class="restaurantTitle">{{item.name}}</view>
+          <view>{{item.bad}}</view>
         </view>
       </view>
     </view>
@@ -35,5 +23,7 @@
   <view class="action">
     <button class="actionButton" bindtap="lucky">手气不错</button>
     <button class="actionButton" bindtap="fetchData">重置</button>
+    <button class="actionButton" bindtap="fetchNext">+1天</button>
+    <button class="actionButton" bindtap="fetchPrev">-1天</button>
   </view>
 </view>

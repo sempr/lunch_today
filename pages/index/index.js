@@ -9,32 +9,38 @@ Page({
   data: {
     goods: [],
     bads: [],
+    offset: 0,
+  },
+  randomData: function (seed) {
+    wx.request({
+      url: "https://lunch.ebincr.com/lunch.json",
+      success: (res) => {
+        let o = random.randomFour(res.data.length, seed);
+        let data = res.data;
+        this.setData({
+          goods: [data[o[0]], data[o[1]]],
+          bads: [data[o[2]], data[o[3]]],
+        });
+      },
+    });
   },
   lucky: function () {
-    wx.request({
-      url: "https://lunch.ebincr.com/lunch.json",
-      success: (res) => {
-        let o = random.randomFour(res.data.length, (new Date()).getTime());
-        let data = res.data;
-        this.setData({
-          goods: [data[o[0]], data[o[1]]],
-          bads: [data[o[2]], data[o[3]]],
-        });
-      },
-    });
+    this.randomData(new Date().getTime());
   },
   fetchData: function () {
-    wx.request({
-      url: "https://lunch.ebincr.com/lunch.json",
-      success: (res) => {
-        let o = random.randomFour(res.data.length, (new Date()).getTime()/86400000);
-        let data = res.data;
-        this.setData({
-          goods: [data[o[0]], data[o[1]]],
-          bads: [data[o[2]], data[o[3]]],
-        });
-      },
-    });
+    this.setData({ offset: 0 });
+    this.randomData(new Date().getTime() / 86400 / 1000);
+  },
+  fetchOffset: function (offset) {
+    this.randomData(new Date().getTime() / 86400 / 1000 + offset);
+  },
+  fetchNext: function () {
+    this.fetchOffset(this.data.offset+1);
+    this.setData({ offset: this.data.offset + 1 });
+  },
+  fetchPrev: function () {
+    this.fetchOffset(this.data.offset-1);
+    this.setData({ offset: this.data.offset - 1 });
   },
   onLoad: function () {
     this.fetchData();
